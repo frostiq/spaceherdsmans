@@ -14,8 +14,13 @@ namespace Space_Herdsmans.Services
             return _data.Values;
         }
 
-        public GeoCoordinates GetLastUserPosition(Guid userId) => _data[userId];
+        public GeoCoordinates GetLastUserPosition(Guid userId)
+        {
+            GeoCoordinates coordinates;
+            _data.TryGetValue(userId, out coordinates);
 
+            return coordinates;
+        }
 
         public void UpdateUserPosition(Guid userId, GeoCoordinates point)
         {

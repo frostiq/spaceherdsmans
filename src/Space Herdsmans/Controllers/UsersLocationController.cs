@@ -18,10 +18,10 @@ namespace Space_Herdsmans.Controllers
         }
 
         [HttpGet("{userId}")]
-        public IEnumerable<GeoCoordinates> Get(Guid userId, double radius)
+        public IEnumerable<GeoCoordinates> Get(Guid userId)
         {
             var lastPosition = _usersLocationService.GetLastUserPosition(userId);
-            return _usersLocationService.GetCloseUsers(lastPosition, radius);
+            return _usersLocationService.GetCloseUsers(lastPosition, 0);
         }
 
         [HttpPost("{userId}")]
