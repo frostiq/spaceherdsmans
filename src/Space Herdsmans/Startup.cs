@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Space_Herdsmans.Services;
 
 namespace Space_Herdsmans
 {
@@ -28,6 +25,8 @@ namespace Space_Herdsmans
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddSingleton<IUsersLocationService, InMemoryUsersLocationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
