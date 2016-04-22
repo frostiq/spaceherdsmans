@@ -25,6 +25,7 @@ namespace Space_Herdsmans
         {
             // Add framework services.
             services.AddMvc();
+            services.AddSwaggerGen();
 
             services.AddSingleton<IUsersLocationService, InMemoryUsersLocationService>();
         }
@@ -34,6 +35,9 @@ namespace Space_Herdsmans
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseSwaggerGen();
+            app.UseSwaggerUi();
 
             app.UseIISPlatformHandler();
 
